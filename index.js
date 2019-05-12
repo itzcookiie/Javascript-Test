@@ -11,10 +11,44 @@ const runHoover = (input) => {
             x:0,
             y:0
         }
-    }
+    },
+    dirtLocations = [],
+    allCords = [],
+    dirtPicker = 0;
 
     input.map(action => {
-        
+        if(!isNaN(parseInt(action))){
+            if(index > 0){
+                for(let i = 0, a = action.length; i < a; i++){
+                    i ? robotCords.cords.x : robotCords.cords.y
+                }
+            }
+            if(index > 1 || index < input.length - 2) {
+                dirtLocations.push(parseInt(action))
+            }
+        } else {
+            for(let j = 0, b = action.length; j < b; j++){
+                switch(action[j]){
+                    case "N":
+                    robotCords.cords.y++
+                    allCords.push(`${robotCords.cords.x}${robotCords.cords.y}`)
+                    break; 
+                    case "S":
+                    robotCords.cords.y--
+                    allCords.push(`${robotCords.cords.x}${robotCords.cords.y}`)
+                    break;
+                    case "E":
+                    robotCords.cords.x++
+                    allCords.push(`${robotCords.cords.x}${robotCords.cords.y}`)
+                    break;
+                    case "W":
+                    robotCords.cords.y--
+                    allCords.push(`${robotCords.cords.x}${robotCords.cords.y}`)
+                    break;
+                }
+            }
+            
+        }
     })
 }
 
