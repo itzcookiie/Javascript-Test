@@ -36,8 +36,18 @@ const runHoover = (input) => {
                     case "S":
                     robotCords.cords.y--
                     allCords.push(`${robotCords.cords.x}${robotCords.cords.y}`)
+                    break;
+                    case "E":
+                    robotCords.cords.x++
+                    allCords.push(`${robotCords.cords.x}${robotCords.cords.y}`)
+                    break;
+                    case "W":
+                    robotCords.cords.y--
+                    allCords.push(`${robotCords.cords.x}${robotCords.cords.y}`)
+                    break;
                 }
             }
+            
         }
     })
 }
