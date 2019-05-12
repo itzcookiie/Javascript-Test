@@ -13,7 +13,8 @@ const runHoover = (input) => {
         }
     },
     dirtLocations = [],
-    allCords = [];
+    allCords = [],
+    dirtPicker = 0;
 
     input.map(action => {
         if(!isNaN(parseInt(action))){
@@ -30,8 +31,11 @@ const runHoover = (input) => {
                 switch(action[j]){
                     case "N":
                     robotCords.cords.y++
-                    newCords = [robotCords.cords.x, robotCords.cords.y]
-                    
+                    allCords.push(`${robotCords.cords.x}${robotCords.cords.y}`)
+                    break; 
+                    case "S":
+                    robotCords.cords.y--
+                    allCords.push(`${robotCords.cords.x}${robotCords.cords.y}`)
                 }
             }
         }
