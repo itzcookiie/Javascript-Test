@@ -11,10 +11,30 @@ const runHoover = (input) => {
             x:0,
             y:0
         }
-    }
+    },
+    dirtLocations = [];
+    allCords = [];
+    newCords = [];
 
     input.map(action => {
-        
+        if(!isNaN(parseInt(action))){
+            if(index > 0){
+                for(let i = 0, a = action.length; i < a; i++){
+                    i ? robotCords.cords.x : robotCords.cords.y
+                }
+            }
+            if(index > 1 || index < input.length - 2) {
+                dirtLocations.push(parseInt(action))
+            }
+        } else {
+            for(let j = 0, b = action.length; j < b; j++){
+                switch(action[j]){
+                    case "N":
+                    robotCords.cords.y++
+                    
+                }
+            }
+        }
     })
 }
 
