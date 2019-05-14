@@ -17,6 +17,7 @@ app.options('*', cors());
 //   next()
 // })
 
+//Read the input.txt file
 app.get('/data', (req, res) => {
 // res.sendFile('input.txt', {root: __dirname })
 let readStream = fs.createReadStream(__dirname + '/input.txt')
@@ -27,11 +28,12 @@ readStream.on('close', () => {
 readStream.pipe(res)
 });
 
+//Display index.html file containing the index.js file
 app.get('/', (req,res) => {
   res.sendFile('index.html', {root: __dirname})
 })
 
 app.listen(port, () => {
-  console.log('Example app listening on port 8000!')
+  console.log(`Example app listening on port ${port}!`)
 });
 
