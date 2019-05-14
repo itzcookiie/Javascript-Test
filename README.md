@@ -9,6 +9,17 @@ Clone the repository and run ` npm i ` to install all the packages and dependaci
 - Runs on the browser
 - Written using javascript and nodejs
 
+## Folder structure
+
+![Screenshot](images/folder_structure.PNG)
+
+- workingOut.js - shows original working out before final solution. The non-refactored version of index.js
+- index.js - shows final solution with comments to show what each part of the file does and where everything is
+- index.html - the file that is displayed on localhost which contains and renders index.js
+- server.js - file containing nodejs. Handles the back end of the application
+- input.txt - file containing all the information regarding the hoover (programmable input)
+- index.css - css file for the drag and drop in index.js
+
 ## Setting up
 
 To set up the program run in the terminal
