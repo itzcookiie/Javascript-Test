@@ -71,9 +71,9 @@ The second line represents the **amount of dirt picked up by the hoover** from i
 
 To see the updated final position and total dirt collected **save the changes to the input.txt file** and then: 
 - refresh the page after 
-- click on the refresh button
+- click on the trigger button
 - drag the file from the folder into the drag and drop area
 
 The results will show in the console. 
 
-*Bear in mind, it may take a little while for the results to show if you click the refresh button as it is performing hidden refresh without reloading the whole page.*
+*Bear in mind, it may take a little while for the results to show if you click the trigger button as it is performing hidden refresh without reloading the whole page.*
