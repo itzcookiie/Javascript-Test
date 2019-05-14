@@ -1,5 +1,10 @@
 //Refactored - check workingOut.js for my inital working
 
+//Keeping code DRY
+const reformatData = (data) => {
+    return data.split('\n').join().replace(/\s/g, "").split(',')
+}
+
 //Function that checks if the hoover has hit a wall
 const checkCordIsInGrid = (robotCord, cord, gridSize, operation) => {
     operation === "add" ? robotCord[cord]++ : robotCord[cord]--
@@ -51,7 +56,7 @@ const runHoover = (input) => {
 
         } else {
             //Actions for each cardinal direction.
-            for(let i = 0, drivingInstrctions = action.length; i < drivingInstrctions; i++){
+            for(let i = 0, drivingInstructions = action.length; i < drivingInstructions; i++){
                 switch(action[i]){
                     //Increment Y cord by 1
                     case "N":
@@ -81,7 +86,7 @@ const runHoover = (input) => {
             for(let j = 0, aC = allCords.length; j < aC; j++) {
                 if(dirtLocations[i] === allCords[j]){
                     //Remove the dirt cords from the dirtLocations array
-                    let cordMatch = dirtLocations.splice(i,1)
+                    dirtLocations.splice(i,1)
                     //Increment tracker for dirt
                     dirtCounter++
                 }
@@ -90,11 +95,11 @@ const runHoover = (input) => {
     return `${robotCords.x} ${robotCords.y}\n${dirtCounter}`
 }
 
-//Call for the input.txt file
+//First call for the input.txt file
 fetch('http://localhost:8000/data')
 .then(response => response.text())
 .then(data => {
-   let robot = runHoover(data.split('\n').join().replace(/\s/g, "").split(','))
+   let robot = runHoover(reformatData(data))
    console.log(robot)
 })
 
@@ -103,7 +108,7 @@ const running = () => {
 fetch('http://localhost:8000/data')
 .then(response => response.text())
 .then(data => {
-   let robot = runHoover(data.split('\n').join().replace(/\s/g, "").split(','))
+   let robot = runHoover(reformatData(data))
    console.log(robot)
 })
 }
@@ -111,3 +116,46 @@ fetch('http://localhost:8000/data')
 //Run function upon each click of the button
 const button = document.querySelector('button')
 button.addEventListener('click', running)
+
+
+//Drag and drop 
+let dropArea = document.getElementById('drop-area')
+
+;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    dropArea.addEventListener(eventName, preventDefaults, false)
+  })
+  
+  function preventDefaults (e) {
+    e.preventDefault()
+    e.stopPropagation()
+  }
+
+  ;['dragenter', 'dragover'].forEach(eventName => {
+    dropArea.addEventListener(eventName, highlight, false)
+  })
+  
+  ;['dragleave', 'drop'].forEach(eventName => {
+    dropArea.addEventListener(eventName, unhighlight, false)
+  })
+  
+  function highlight(e) {
+    dropArea.classList.add('highlight')
+  }
+  
+  function unhighlight(e) {
+    dropArea.classList.remove('highlight')
+  }
+
+  dropArea.addEventListener('drop', handleDrop, false)
+
+function handleDrop(e) {
+  let dt = e.dataTransfer
+  let files = dt.files
+    let reader = new FileReader();
+    reader.readAsText(files[0])
+    reader.onload = () => {
+        let text = reader.result
+        let bot = runHoover(reformatData(text))
+        console.log(bot)
+    }
+}
