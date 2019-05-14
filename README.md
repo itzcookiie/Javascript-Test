@@ -4,6 +4,13 @@ Javascript test to write a program that will run an imaginary robotic hoover in 
 ## Getting Started
 Clone the repository and run ` npm i ` to install all the packages and dependacies
 
+```
+git clone https://github.com/itzcookiie/Javascript-Test.git
+```
+```
+npm i
+```
+
 ## Deliverables
 - Web page application
 - Runs on the browser
@@ -76,4 +83,4 @@ To see the updated final position and total dirt collected **save the changes to
 
 The results will show in the console. 
 
-*Bear in mind, it may take a little while for the results to show if you click the trigger button as it is performing hidden refresh without reloading the whole page.*
+*Bear in mind, it may take a little while for the results to show if you click the trigger button as it is performing a hidden refresh without reloading the whole page.*
